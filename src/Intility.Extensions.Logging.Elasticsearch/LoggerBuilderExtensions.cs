@@ -9,7 +9,9 @@ namespace Intility.Extensions.Logging
     public static class LoggerBuilderExtensions
     {
         /// <summary>
-        /// Use Elasticsearch log sink.
+        /// Uses Elasticsearch sink if Endpoints is defined in the <paramref name="configSection"/>.
+        /// <br />
+        /// IndexFormat is required in config. Optionally specify Username and Password for BasicAuth
         /// </summary>
         /// <param name="builder"></param>
         /// <param name="configSection"></param>
