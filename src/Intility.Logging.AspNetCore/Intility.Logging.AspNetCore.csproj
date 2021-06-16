@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <PackageId>Intility.Logging.AspNetCore</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
