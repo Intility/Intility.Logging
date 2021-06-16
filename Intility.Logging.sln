@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intility.Extensions.Logging
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intility.Extensions.Logging.Sentry", "src\Intility.Extensions.Logging.Sentry\Intility.Extensions.Logging.Sentry.csproj", "{E5D0E124-FC4E-48A1-B96C-ADA424C8D4BA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{B6CD0A67-0B4F-467C-98A4-AEB69CFD3C48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6CD0A67-0B4F-467C-98A4-AEB69CFD3C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CD0A67-0B4F-467C-98A4-AEB69CFD3C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CE796A8-05F7-4C69-A6A5-D46DCCDC9AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2CE796A8-05F7-4C69-A6A5-D46DCCDC9AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CE796A8-05F7-4C69-A6A5-D46DCCDC9AC4}.Debug|x64.ActiveCfg = Debug|Any CPU

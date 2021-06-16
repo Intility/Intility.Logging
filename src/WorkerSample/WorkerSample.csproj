@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intility.Extensions.Logging.Sentry\Intility.Extensions.Logging.Sentry.csproj" />
     <ProjectReference Include="..\Intility.Logging.AspNetCore\Intility.Logging.AspNetCore.csproj" />
   </ItemGroup>
 </Project>
