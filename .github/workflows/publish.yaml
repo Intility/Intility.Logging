@@ -27,6 +27,7 @@ jobs:
       run: ./build.sh push --nuget-api-key ${{ secrets.NUGET_API_KEY }}
       shell: bash
   create-issue:
+    needs: build
     name: Create issue in template repo
     runs-on: ubuntu-latest
     steps:
