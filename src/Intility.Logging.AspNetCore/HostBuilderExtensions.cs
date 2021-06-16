@@ -8,7 +8,7 @@ using System.Linq;
 using Serilog.Sinks.Elasticsearch;
 using Intility.Extensions.Logging;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Intility.Extensions.Logging
 {
     public static class HostBuilderExtensions
     {

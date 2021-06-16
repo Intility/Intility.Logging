@@ -7,7 +7,7 @@ using Sentry.AspNetCore;
 using Sentry.Serilog;
 using Serilog;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Intility.Extensions.Logging
 {
     public static class LoggerBuilderExtensions
     {

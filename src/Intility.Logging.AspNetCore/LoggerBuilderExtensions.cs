@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace Intility.Extensions.Logging
 {
     public static class LoggerBuilderExtensions
     {
