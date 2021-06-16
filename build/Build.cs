@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using Nuke.Common;
 using Nuke.Common.CI;
@@ -30,6 +31,15 @@ class Build : NukeBuild
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
+    [Parameter("Api key to use when pushing the package")]
+    readonly string NugetApiKey;
+
+    [Parameter("NuGet artifact target uri - Defaults to https://api.nuget.org/v3/index.json")]
+    readonly string PackageSource = "https://api.nuget.org/v3/index.json";
+
+    [Parameter("Defines where to store nupkg files in transit - Defaults to ./nupkgs")]
+    readonly string ArtifactDirectory = RootDirectory / "nupkgs";
+
     [Solution] readonly Solution Solution;
     [GitRepository] readonly GitRepository GitRepository;
     [GitVersion(NoFetch = true, Framework = "net5.0")] readonly GitVersion GitVersion;
@@ -45,6 +55,7 @@ class Build : NukeBuild
             SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             TestsDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             EnsureCleanDirectory(OutputDirectory);
+            EnsureCleanDirectory(ArtifactDirectory);
         });
 
     Target Restore => _ => _
@@ -67,67 +78,30 @@ class Build : NukeBuild
                 .EnableNoRestore());
         });
 
-    Target Pack_AspNetCore => _ => _
+    Target Pack => _ => _
         .DependsOn(Compile)
         .Executes(() =>
         {
             DotNetPack(s => s
-                .SetProject(Solution.GetProject("Intility.Logging.AspNetCore"))
+                .SetProject(Solution)
                 .EnableNoBuild()
                 .SetConfiguration(Configuration)
-                .SetPackageTags("dotnet", "intility", "logging", "aspnet", "core")
+                .AddPackageTags("dotnet", "intility", "logging")
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetOutputDirectory(OutputDirectory));
         });
 
-    Target Pack_LoggingBase => _ => _
-        .DependsOn(Compile)
-        .Executes(() =>
+    Target Push => _ => _
+        .DependsOn(Pack)
+        .Requires(() => NugetApiKey)
+        .Requires(() => PackageSource)
+        .Executes(() => 
         {
-            DotNetPack(s => s
-                .SetProject(Solution.GetProject("Intility.Extensions.Logging"))
-                .EnableNoBuild()
-                .SetConfiguration(Configuration)
-                .SetPackageTags("dotnet", "intility", "logging")
-                .SetVersion(GitVersion.NuGetVersionV2)
-                .SetOutputDirectory(OutputDirectory));
-        });
+            EnsureExistingDirectory(ArtifactDirectory);
 
-    Target Pack_Elasticsearch => _ => _
-        .DependsOn(Compile)
-        .Executes(() =>
-        {
-            DotNetPack(s => s
-                .SetProject(Solution.GetProject("Intility.Extensions.Logging.Elasticsearch"))
-                .EnableNoBuild()
-                .SetConfiguration(Configuration)
-                .SetPackageTags("dotnet", "intility", "logging", "elasticsearch", "elastic")
-                .SetVersion(GitVersion.NuGetVersionV2)
-                .SetOutputDirectory(OutputDirectory));
-        });
-
-    Target Pack_Sentry => _ => _
-        .DependsOn(Compile)
-        .Executes(() =>
-        {
-            DotNetPack(s => s
-                .SetProject(Solution.GetProject("Intility.Extensions.Logging.Sentry"))
-                .EnableNoBuild()
-                .SetVerbosity(DotNetVerbosity.Minimal)
-                .SetConfiguration(Configuration)
-                .SetPackageTags("dotnet", "intility", "logging", "sentry")
-                .SetVersion(GitVersion.NuGetVersionV2)
-                .SetOutputDirectory(OutputDirectory));
-        });
-
-    Target Publish => _ => _
-        .DependsOn(Pack_LoggingBase)
-        .DependsOn(Pack_Elasticsearch)
-        .DependsOn(Pack_Sentry)
-        .DependsOn(Pack_AspNetCore)
-        .Executes(() =>
-        {
-            Logger.Info("Publishing packages");
-            //DotNetPublish();
+            DotNetNuGetPush(s => s
+                .SetTargetPath(OutputDirectory / $"*.nupkg")
+                .SetApiKey(NugetApiKey)
+                .SetSource(PackageSource));
         });
 }

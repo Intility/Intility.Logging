@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Intility.Extensions.Logging.Elasticsearch\Intility.Extensions.Logging.Elasticsearch.csproj" />
+    <ProjectReference Include="..\..\src\Intility.Extensions.Logging.Sentry\Intility.Extensions.Logging.Sentry.csproj" />
+    <ProjectReference Include="..\..\src\Intility.Logging.AspNetCore\Intility.Logging.AspNetCore.csproj" />
+  </ItemGroup>
+
+</Project>

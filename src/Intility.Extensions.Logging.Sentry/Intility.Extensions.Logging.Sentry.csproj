@@ -5,6 +5,10 @@
     <PackageId>Intility.Extensions.Logging.Sentry</PackageId>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Sentry.AspNetCore" Version="3.5.0" />
     <PackageReference Include="Sentry.Serilog" Version="3.5.0" />

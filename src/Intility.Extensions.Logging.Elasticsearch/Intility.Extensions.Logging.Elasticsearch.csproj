@@ -5,6 +5,10 @@
     <PackageId>Intility.Extensions.Logging.Elasticsearch</PackageId>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
   </ItemGroup>

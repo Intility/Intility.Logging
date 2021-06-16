@@ -6,6 +6,10 @@
     "build": {
       "type": "object",
       "properties": {
+        "ArtifactDirectory": {
+          "type": "string",
+          "description": "Defines where to store nupkg files in transit - Defaults to ./nupkgs"
+        },
         "Configuration": {
           "type": "string",
           "description": "Configuration to build - Default is 'Debug' (local) or 'Release' (server)",
@@ -43,6 +47,14 @@
           "type": "boolean",
           "description": "Disables displaying the NUKE logo"
         },
+        "NugetApiKey": {
+          "type": "string",
+          "description": "Api key to use when pushing the package"
+        },
+        "PackageSource": {
+          "type": "string",
+          "description": "NuGet artifact target uri - Defaults to https://api.nuget.org/v3/index.json"
+        },
         "Plan": {
           "type": "boolean",
           "description": "Shows the execution plan (HTML)"
@@ -66,11 +78,8 @@
             "enum": [
               "Clean",
               "Compile",
-              "Pack_AspNetCore",
-              "Pack_Elasticsearch",
-              "Pack_LoggingBase",
-              "Pack_Sentry",
-              "Publish",
+              "Pack",
+              "Push",
               "Restore"
             ]
           }
@@ -87,11 +96,8 @@
             "enum": [
               "Clean",
               "Compile",
-              "Pack_AspNetCore",
-              "Pack_Elasticsearch",
-              "Pack_LoggingBase",
-              "Pack_Sentry",
-              "Publish",
+              "Pack",
+              "Push",
               "Restore"
             ]
           }
