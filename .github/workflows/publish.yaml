@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-
+    name: Publish packages
     runs-on: ubuntu-latest
 
     steps:
@@ -26,3 +26,24 @@ jobs:
     - name: Publish to NuGet with Nuke
       run: ./build.sh push --nuget-api-key ${{ secrets.NUGET_API_KEY }}
       shell: bash
+  create-issue:
+    name: Create issue in template repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set tag
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Post Issue
+        uses: maxkomarychev/oction-create-issue@v0.7.1
+        id: create_issue
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: Intility
+          repo: templates
+          title: Intility.Logging packages update to ${{ steps.vars.outputs.tag }}
+          body: Package references in the dotnet templates should be updated to the latest version (${{ steps.vars.outputs.tag }})
+          assignees: emilkje
+      - name: Print outputs
+        run: |
+          echo ${{ steps.create_issue.outputs.id }}
+          echo ${{ steps.create_issue.outputs.number }}
