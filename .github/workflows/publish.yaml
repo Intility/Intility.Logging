@@ -1,4 +1,4 @@
-name: Publish Packages to NuGet
+name: Package Distribution
 
 on:
   push:
