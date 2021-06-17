@@ -448,3 +448,4 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 .nuke/temp/*
+output/*
