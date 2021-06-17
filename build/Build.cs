@@ -76,7 +76,7 @@ class Build : NukeBuild
         });
 
     Target Pack => _ => _
-        .DependsOn(Compile)
+        .DependsOn(Clean, Compile)
         .Executes(() =>
         {
             DotNetPack(s => s
@@ -84,7 +84,6 @@ class Build : NukeBuild
                 .SetTreatWarningsAsErrors(true)
                 .EnableNoBuild()
                 .SetConfiguration(Configuration)
-                .AddPackageTags("intility", "logging")
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetOutputDirectory(OutputDirectory));
         });
