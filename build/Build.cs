@@ -37,9 +37,6 @@ class Build : NukeBuild
     [Parameter("NuGet artifact target uri - Defaults to https://api.nuget.org/v3/index.json")]
     readonly string PackageSource = "https://api.nuget.org/v3/index.json";
 
-    [Parameter("Defines where to store nupkg files in transit - Defaults to ./nupkgs")]
-    readonly string ArtifactDirectory = RootDirectory / "nupkgs";
-
     [Solution] readonly Solution Solution;
     [GitRepository] readonly GitRepository GitRepository;
     [GitVersion(NoFetch = true, Framework = "net5.0")] readonly GitVersion GitVersion;
@@ -55,7 +52,6 @@ class Build : NukeBuild
             SourceDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             TestsDirectory.GlobDirectories("**/bin", "**/obj").ForEach(DeleteDirectory);
             EnsureCleanDirectory(OutputDirectory);
-            EnsureCleanDirectory(ArtifactDirectory);
         });
 
     Target Restore => _ => _
@@ -71,6 +67,7 @@ class Build : NukeBuild
         {
             DotNetBuild(s => s
                 .SetProjectFile(Solution)
+                .SetTreatWarningsAsErrors(true)
                 .SetConfiguration(Configuration)
                 .SetAssemblyVersion(GitVersion.AssemblySemVer)
                 .SetFileVersion(GitVersion.AssemblySemFileVer)
@@ -84,9 +81,10 @@ class Build : NukeBuild
         {
             DotNetPack(s => s
                 .SetProject(Solution)
+                .SetTreatWarningsAsErrors(true)
                 .EnableNoBuild()
                 .SetConfiguration(Configuration)
-                .AddPackageTags("dotnet", "intility", "logging")
+                .AddPackageTags("intility", "logging")
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetOutputDirectory(OutputDirectory));
         });
@@ -97,8 +95,6 @@ class Build : NukeBuild
         .Requires(() => PackageSource)
         .Executes(() => 
         {
-            EnsureExistingDirectory(ArtifactDirectory);
-
             DotNetNuGetPush(s => s
                 .SetTargetPath(OutputDirectory / $"*.nupkg")
                 .SetApiKey(NugetApiKey)
