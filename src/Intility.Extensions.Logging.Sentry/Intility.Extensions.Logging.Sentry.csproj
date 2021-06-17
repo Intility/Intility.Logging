@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageId>Intility.Extensions.Logging.Sentry</PackageId>
-    <PackageTags>intility;logging;extensions;sentry</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
+    <PackageId>Intility.Extensions.Logging.Sentry</PackageId>
+    <PackageTags>intility;logging;extensions;sentry</PackageTags>
+    <Description>
+      Enable Sentry instrumentation and logging provider.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>

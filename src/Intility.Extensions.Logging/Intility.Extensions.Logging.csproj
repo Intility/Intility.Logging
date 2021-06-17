@@ -2,12 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageId>Intility.Extensions.Logging</PackageId>
-    <PackageTags>intility;logging;extensions</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
+    <PackageId>Intility.Extensions.Logging</PackageId>
+    <PackageTags>intility;logging;extensions</PackageTags>
+    <Description>
+      Common logging infrastructure with extension primitives. 
+      Please do not install this package directly.
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>

@@ -2,12 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <PackageId>Intility.Logging.AspNetCore</PackageId>
-    <PackageTags>intility;logging;aspnet;aspnetcore</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
+    <PackageId>Intility.Logging.AspNetCore</PackageId>
+    <PackageTags>intility;logging;aspnet;aspnetcore</PackageTags>
+    <Description>
+      This package enables common logging infrastructure to any aspnet 
+      or dotnet project using generic host mechanism. Additional logging 
+      capabilities are available through the extension packages Intility.Extensions.Logging.*
+    </Description>
   </PropertyGroup>
 
   <ItemGroup>
