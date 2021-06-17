@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Intility.Extensions.Logging.Elasticsearch</PackageId>
+    <PackageTags>intility;logging;extensions;elasticsearch;elastic</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>

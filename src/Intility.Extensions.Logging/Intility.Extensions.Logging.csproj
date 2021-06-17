@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <PackageId>Intility.Extensions.Logging</PackageId>
+    <PackageTags>intility;logging;extensions</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup>
