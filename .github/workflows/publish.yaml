@@ -39,6 +39,7 @@ jobs:
           title: Intility.Logging packages update to ${{ steps.vars.outputs.tag }}
           body: Package references in the dotnet templates should be updated to the latest version (${{ steps.vars.outputs.tag }})
           assignees: emilkje
+          labels: dotnet
       - name: Print outputs
         run: |
           echo ${{ steps.create_issue.outputs.id }}
