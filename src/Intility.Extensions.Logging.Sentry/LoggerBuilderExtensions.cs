@@ -23,7 +23,7 @@ namespace Intility.Extensions.Logging
             // this section because they both inherit from Sentry.SentryOptions
             var configuration = builder.Host.Configuration.GetSection(configSection);
 
-            if(string.IsNullOrWhiteSpace(configuration["Dsn"]))
+            if (string.IsNullOrWhiteSpace(configuration["Dsn"]))
             {
                 return builder;
             }
@@ -37,13 +37,7 @@ namespace Intility.Extensions.Logging
             });
 
             // configure serilog logger
-            builder.Configuration.WriteTo.Sentry((SentrySerilogOptions options) =>
-            {
-                configuration.Bind(options);
-
-                // SDK already initialized by webHostBuilder
-                options.InitializeSdk = false;
-            });
+            builder.Configuration.WriteTo.Sentry((SentrySerilogOptions options) => configuration.Bind(options));
 
             return builder;
         }
