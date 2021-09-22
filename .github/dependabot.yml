@@ -1,0 +1,34 @@
+# https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "nuget"
+    directory: "/build"
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "nuget"
+    directory: "/src/Intility.Extensions.Logging"
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "nuget"
+    directory: "/src/Intility.Logging.AspNetCore"
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "nuget"
+    directory: "/src/Intility.Extensions.Logging.Sentry"
+    schedule:
+      interval: "daily"
+      
+  - package-ecosystem: "nuget"
+    directory: "/src/Intility.Extensions.Logging.Elasticsearch"
+    schedule:
+      interval: "daily"
+      
