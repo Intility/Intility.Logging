@@ -5,30 +5,42 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Europe/Oslo"
       
   - package-ecosystem: "nuget"
     directory: "/build"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Europe/Oslo"
       
   - package-ecosystem: "nuget"
     directory: "/src/Intility.Extensions.Logging"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Europe/Oslo"
       
   - package-ecosystem: "nuget"
     directory: "/src/Intility.Logging.AspNetCore"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Europe/Oslo"
       
   - package-ecosystem: "nuget"
     directory: "/src/Intility.Extensions.Logging.Sentry"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Europe/Oslo"
       
   - package-ecosystem: "nuget"
     directory: "/src/Intility.Extensions.Logging.Elasticsearch"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+      time: "09:00"
+      timezone: "Europe/Oslo"
       
