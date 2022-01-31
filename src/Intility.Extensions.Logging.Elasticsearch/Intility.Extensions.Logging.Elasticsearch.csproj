@@ -1,24 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <IsPackable>true</IsPackable>
-    <PackageId>Intility.Extensions.Logging.Elasticsearch</PackageId>
-    <PackageTags>intility;logging;extensions;elasticsearch;elastic</PackageTags>
-    <Description>
-      Enable Elasticsearch logging provider.
-    </Description>
-  </PropertyGroup>
+	<PropertyGroup>
+		<IsPackable>true</IsPackable>
+		<PackageId>Intility.Extensions.Logging.Elasticsearch</PackageId>
+		<PackageTags>intility;logging;extensions;elasticsearch;elastic</PackageTags>
+		<Description>
+			Enable Elasticsearch logging provider.
+		</Description>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.4.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Intility.Extensions.Logging\Intility.Extensions.Logging.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Intility.Extensions.Logging\Intility.Extensions.Logging.csproj" />
+	</ItemGroup>
 
 </Project>

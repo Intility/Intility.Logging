@@ -1,25 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <IsPackable>true</IsPackable>
-    <PackageId>Intility.Extensions.Logging.Sentry</PackageId>
-    <PackageTags>intility;logging;extensions;sentry</PackageTags>
-    <Description>
-      Enable Sentry instrumentation and logging provider.
-    </Description>
-  </PropertyGroup>
+	<PropertyGroup>
+		<IsPackable>true</IsPackable>
+		<PackageId>Intility.Extensions.Logging.Sentry</PackageId>
+		<PackageTags>intility;logging;extensions;sentry</PackageTags>
+		<Description>
+			Enable Sentry instrumentation and logging provider.
+		</Description>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Sentry.AspNetCore" Version="3.13.0" />
-    <PackageReference Include="Sentry.Serilog" Version="3.13.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Sentry.AspNetCore" Version="3.13.0" />
+		<PackageReference Include="Sentry.Serilog" Version="3.13.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Intility.Extensions.Logging\Intility.Extensions.Logging.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Intility.Extensions.Logging\Intility.Extensions.Logging.csproj" />
+	</ItemGroup>
 
 </Project>
