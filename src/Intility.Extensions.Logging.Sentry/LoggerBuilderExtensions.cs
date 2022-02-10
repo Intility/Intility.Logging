@@ -28,14 +28,6 @@ namespace Intility.Extensions.Logging
                 return builder;
             }
 
-            // ConfigureWebHostDefaults can be called multiple times with additive effect
-            builder.HostBuilder.ConfigureWebHostDefaults(webHostBuilder =>
-            {
-                // runtime instrumentation
-                webHostBuilder.UseSentry((SentryAspNetCoreOptions options) =>
-                    configuration.Bind(options));
-            });
-
             // configure serilog logger
             builder.Configuration.WriteTo.Sentry((SentrySerilogOptions options) => configuration.Bind(options));
 
