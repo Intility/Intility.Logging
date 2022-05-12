@@ -29,7 +29,15 @@ namespace Intility.Extensions.Logging
             }
 
             // configure serilog logger
-            builder.Configuration.WriteTo.Sentry((SentrySerilogOptions options) => configuration.Bind(options));
+            builder.Configuration.WriteTo.Sentry((SentrySerilogOptions options) =>
+            {
+                configuration.Bind(options);
+
+                if (string.IsNullOrWhiteSpace(options.Environment))
+                {
+                    options.Environment = builder.Host.HostingEnvironment.EnvironmentName;
+                }
+            });
 
             return builder;
         }
