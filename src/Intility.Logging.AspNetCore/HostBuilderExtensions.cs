@@ -7,6 +7,7 @@ using Serilog.Sinks.SystemConsole.Themes;
 using System.Linq;
 using Serilog.Sinks.Elasticsearch;
 using Intility.Extensions.Logging;
+using Serilog.Formatting.Compact;
 
 namespace Intility.Extensions.Logging
 {
@@ -17,14 +18,22 @@ namespace Intility.Extensions.Logging
             return UseIntilityLogging(builder, null);
         }
 
-        public static IHostBuilder UseIntilityLogging(this IHostBuilder builder, Action<HostBuilderContext,ILoggerBuilder> configure)
+        public static IHostBuilder UseIntilityLogging(this IHostBuilder builder, Action<HostBuilderContext,ILoggerBuilder> configure, bool useStructuredLogging = false)
         {
             if (builder == null) throw new ArgumentNullException(nameof(builder));
 
             builder.UseSerilog((HostBuilderContext ctx, LoggerConfiguration logger) =>
             {
-                logger.ReadFrom.Configuration(ctx.Configuration, sectionName: "Serilog")
-                    .WriteTo.Console(theme: AnsiConsoleTheme.Code);
+                logger.ReadFrom.Configuration(ctx.Configuration, sectionName: "Serilog");
+
+                if (useStructuredLogging)
+                {
+                    logger.WriteTo.Console(new CompactJsonFormatter());
+                }
+                else
+                {
+                    logger.WriteTo.Console(theme: AnsiConsoleTheme.Code);
+                }
 
                 var loggerBuilder = new LoggerBuilder(ctx, logger, builder);
                 configure?.Invoke(ctx, loggerBuilder);
@@ -34,7 +43,5 @@ namespace Intility.Extensions.Logging
 
             return builder;
         }
-
-        
     }
 }
