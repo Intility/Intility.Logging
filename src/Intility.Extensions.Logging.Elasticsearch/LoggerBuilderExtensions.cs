@@ -1,5 +1,4 @@
-﻿using Intility.Extensions.Logging;
-using Serilog;
+﻿using Serilog;
 using Serilog.Sinks.Elasticsearch;
 using System;
 using System.Linq;

@@ -1,10 +1,4 @@
-﻿using Intility.Extensions.Logging;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Serilog;
 
 namespace Intility.Extensions.Logging
 {
@@ -25,6 +19,16 @@ namespace Intility.Extensions.Logging
                 .Enrich.WithMemoryUsage();
 
             return builder;
+        }
+
+        /// <summary>
+        /// Convenience method. Sets the ConsoleFormat to Structured.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static ILoggerBuilder UseOpenshiftLogging(this ILoggerBuilder builder)
+        {
+            return builder.UseConsoleFormat(ConsoleFormat.Structured);
         }
     }
 }
