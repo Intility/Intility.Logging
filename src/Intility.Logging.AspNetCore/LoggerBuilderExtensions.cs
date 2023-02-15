@@ -26,5 +26,15 @@ namespace Intility.Extensions.Logging
 
             return builder;
         }
+
+        /// <summary>
+        /// Convenience method. Sets the ConsoleFormat to Structured.
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
+        public static ILoggerBuilder UseOpenshiftLogging(this ILoggerBuilder builder)
+        {
+            return builder.UseConsoleFormat(ConsoleFormat.Structured);
+        }
     }
 }
