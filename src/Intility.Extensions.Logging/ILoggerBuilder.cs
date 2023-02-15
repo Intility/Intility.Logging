@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Serilog;
-using System;
 
 namespace Intility.Extensions.Logging
 {

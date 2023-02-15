@@ -1,9 +1,4 @@
-﻿using System;
-using Intility.Extensions.Logging;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Sentry.AspNetCore;
+﻿using Microsoft.Extensions.Configuration;
 using Sentry.Serilog;
 using Serilog;
 
