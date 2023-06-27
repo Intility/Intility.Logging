@@ -29,8 +29,9 @@ namespace Intility.Extensions.Logging
             var password = elasticConfig["Password"];
             var indexFormat = elasticConfig["IndexFormat"];
             var versionString = elasticConfig["Version"];
+            bool dataStream = bool.TryParse(elasticConfig["DataStream"], out var result) && result;
 
-            if(string.IsNullOrWhiteSpace(indexFormat))
+            if (string.IsNullOrWhiteSpace(indexFormat))
             {
                 throw new Exception("Failed to initialize Elasticsearch sink", 
                     new ArgumentException($"missing elastic config: {configSection}:IndexFormat"));
@@ -52,6 +53,11 @@ namespace Intility.Extensions.Logging
                 AutoRegisterTemplate = true,
                 AutoRegisterTemplateVersion = versionFormat
             };
+
+            if (dataStream)
+            {
+                options.BatchAction = ElasticOpType.Create;
+            }
 
             if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
