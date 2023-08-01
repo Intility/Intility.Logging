@@ -15,7 +15,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Sentry.AspNetCore" Version="3.30.0" />
-		<PackageReference Include="Sentry.Serilog" Version="3.31.0" />
+		<PackageReference Include="Sentry.Serilog" Version="3.34.0" />
 	</ItemGroup>
 
 	<ItemGroup>
