@@ -94,6 +94,7 @@ class Build : NukeBuild
         {
             DotNetNuGetPush(s => s
                 .SetTargetPath(OutputDirectory / $"*.nupkg")
+                .EnableSkipDuplicate()
                 .SetApiKey(NugetApiKey)
                 .SetSource(PackageSource));
         });
