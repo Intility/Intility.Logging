@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -13,6 +13,11 @@
 			or dotnet project using generic host mechanism. Additional logging
 			capabilities are available through the extension packages Intility.Extensions.Logging.*
 		</Description>
+    <owners>Intility</owners>
+    <Company>Intility</Company>
+    <authors>Herman Jensen, Emil Kjelsrud, Thorstein Løkensgard</authors>
+    <RepositoryUrl>https://github.com/Intility/Intility.Logging</RepositoryUrl>
+    <PackageIcon>intility-logo.png</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -20,21 +25,26 @@
 		<PackageReference Include="Serilog.Enrichers.AssemblyName" Version="1.0.9" />
 		<PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
 		<PackageReference Include="Serilog.Enrichers.Memory" Version="1.0.4" />
+    <PackageReference Include="Serilog.Enrichers.AzureClaims" Version="1.0.1" />
 		<PackageReference Include="Serilog.Sinks.Elasticsearch" Version="9.0.0" />
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
-	</ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.4" />
+  </ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.2" />
-	</ItemGroup>
-
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.1" />
+  </ItemGroup>
+  
 	<ItemGroup>
 		<ProjectReference Include="..\Intility.Extensions.Logging\Intility.Extensions.Logging.csproj" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../assets/intility-logo.png" Pack="true" Visible="false" PackagePath="\" />
+  </ItemGroup>
 
 </Project>

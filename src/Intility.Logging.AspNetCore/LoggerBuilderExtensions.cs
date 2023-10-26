@@ -16,7 +16,9 @@ namespace Intility.Extensions.Logging
                 .Enrich.WithEnvironmentUserName()
                 .Enrich.WithMachineName()
                 .Enrich.WithAssemblyName()
-                .Enrich.WithMemoryUsage();
+                .Enrich.WithMemoryUsage()
+                .Enrich.WithDisplayName()
+                .Enrich.WithAppId();
 
             return builder;
         }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -12,18 +12,27 @@
 			Common logging infrastructure with extension primitives.
 			Please do not install this package directly.
 		</Description>
+    <owners>Intility</owners>
+    <Company>Intility</Company>
+    <authors>Herman Jensen, Emil Kjelsrud, Thorstein Løkensgard</authors>
+    <RepositoryUrl>https://github.com/Intility/Intility.Logging</RepositoryUrl>
+    <PackageIcon>intility-logo.png</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Serilog" Version="2.12.0" />
+		<PackageReference Include="Serilog" Version="3.0.1" />
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="5.0.0" />
-	</ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+  </ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-		<PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
-	</ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../../assets/intility-logo.png" Pack="true" Visible="false" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
