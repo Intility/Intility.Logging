@@ -19,7 +19,14 @@ namespace Intility.Extensions.Logging
 
             builder.UseSerilog((HostBuilderContext ctx, LoggerConfiguration logger) =>
             {
+#if NET7_0_OR_GREATER
+                logger.ReadFrom.Configuration(ctx.Configuration, readerOptions: new()
+                {
+                    SectionName = "Serilog "
+                });
+#else
                 logger.ReadFrom.Configuration(ctx.Configuration, sectionName: "Serilog");
+#endif
 
                 var loggerBuilder = new LoggerBuilder(ctx, logger, builder);
                 configure?.Invoke(ctx, loggerBuilder);
