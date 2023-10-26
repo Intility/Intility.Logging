@@ -15,10 +15,10 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Setup .NET 6
+    - name: Setup .NET 7
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.*
+        dotnet-version: 7.0.*
 
     - name: Publish to NuGet with Nuke
       run: ./build.sh push --nuget-api-key ${{ secrets.NUGET_API_KEY }}
