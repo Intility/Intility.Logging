@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net5.0;net6.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -11,15 +11,24 @@
 		<Description>
 			Enable Sentry instrumentation and logging provider.
 		</Description>
+    <owners>Intility</owners>
+    <Company>Intility</Company>
+    <authors>Herman Jensen, Emil Kjelsrud, Thorstein Løkensgard</authors>
+    <RepositoryUrl>https://github.com/Intility/Intility.Logging</RepositoryUrl>
+    <PackageIcon>intility-logo.png</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Sentry.AspNetCore" Version="3.30.0" />
-		<PackageReference Include="Sentry.Serilog" Version="3.31.0" />
+		<PackageReference Include="Sentry.AspNetCore" Version="3.40.1" />
+		<PackageReference Include="Sentry.Serilog" Version="3.40.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Intility.Extensions.Logging\Intility.Extensions.Logging.csproj" />
 	</ItemGroup>
 
+  <ItemGroup>
+    <None Include="../../assets/intility-logo.png" Pack="true" Visible="false" PackagePath="\" />
+  </ItemGroup>
+  
 </Project>
