@@ -5,7 +5,7 @@ namespace Intility.Extensions.Logging
     public static class LoggerBuilderExtensions
     {
         /// <summary>
-        /// Enriches logs with SourceContext, EnvironmentName, HostName, AssemblyName and MemoryUsage
+        /// Enriches logs with SourceContext, EnvironmentName, HostName, AssemblyName, MemoryUsage, AppId and DisplayName
         /// </summary>
         /// <param name="builder"></param>
         /// <returns></returns>
