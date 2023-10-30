@@ -22,7 +22,7 @@ namespace Intility.Extensions.Logging
 #if NET7_0_OR_GREATER
                 logger.ReadFrom.Configuration(ctx.Configuration, readerOptions: new()
                 {
-                    SectionName = "Serilog "
+                    SectionName = "Serilog"
                 });
 #else
                 logger.ReadFrom.Configuration(ctx.Configuration, sectionName: "Serilog");
